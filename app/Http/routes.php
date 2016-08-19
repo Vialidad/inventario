@@ -21,6 +21,8 @@ Route::get('rutapublic', function () {
 
 Route::resource('cuenta', 'CuentaController');
 
+Route::get('datatablecuenta', 'CuentaController@datatables');
+
 Route::resource('subcuenta', 'SubCuentaController');
 
 Route::resource('proveedor', 'ProveedoreController');
