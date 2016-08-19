@@ -8,25 +8,33 @@
     {!! Form::model($subcuentum, ['method' => 'PATCH', 'action' => ['SubCuentaController@update', $subcuentum->id], 'class' => 'form-horizontal']) !!}
 
     <div class="form-group">
-                        {!! Form::label('cuenta_codigo', 'Cuenta Codigo: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::text('cuenta_codigo', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div><div class="form-group">
-                        {!! Form::label('nombre', 'Nombre: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::text('nombre', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div><div class="form-group">
-                        {!! Form::label('stock', 'Stock: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::text('stock', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
+        {!! Form::label('cuenta_codigo', 'Cuenta Codigo: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('cuenta_codigo', null, ['class' => 'form-control']) !!}
+        </div>
+    </div><!--
+    <div class="form-group">
+        {!! Form::label('codigo', 'Codigo: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('codigo', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>-->
+    <div class="form-group">
+        {!! Form::label('nombre', 'Nombre: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('nombre', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+    <div class="form-group">
+        {!! Form::label('stock', 'Stock: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('stock', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Editar', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}

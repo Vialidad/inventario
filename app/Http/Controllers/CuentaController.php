@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cuenta;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Datatables;
 
 class CuentaController extends Controller {
 
@@ -45,8 +46,9 @@ class CuentaController extends Controller {
 	 * @return Response
 	 */
 	public function show($id) {
-		$cuentum = Cuenta::findOrFail($id);
-		return view('cuenta.show', compact('cuentum'));
+		$cuenta = Cuenta::findOrFail($id);
+
+		return view('cuenta.show', compact('cuenta'));
 	}
 
 	/**
@@ -82,6 +84,21 @@ class CuentaController extends Controller {
 	public function destroy($id) {
 		Cuenta::destroy($id);
 		return redirect('cuenta');
+	}
+
+	public function datatables() {
+
+		$data = Cuenta::Datatables()->get();
+
+		return Datatables::of(collect($data))
+		->editColumn('nombre', function ($data) {
+			 	return '<a href="cuenta/'.$data->id.'" >'. $data->nombre .'</a>';
+			})
+			->addColumn('action', function ($data) {
+		                return '<a href="cuenta/'.$data->id.'/edit" class="btn btn-xs btn-primary">Edit</a>' . ' / <form method="POST" action="http://localhost/inventario/cuenta/ ' .$data->id. '" accept-charset="UTF-8" style="display:inline"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="'. csrf_token() .'"><button type="submit" class="btn btn-danger btn-xs">Borrar</button></form>';
+            })
+			->make(true);
+
 	}
 
 }
