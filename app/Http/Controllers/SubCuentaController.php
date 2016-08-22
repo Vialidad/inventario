@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Subcuenta;
 use Illuminate\Http\Request;
 
+use Datatables;
+
 class SubCuentaController extends Controller {
 
 	/**
@@ -87,6 +89,21 @@ class SubCuentaController extends Controller {
 	public function destroy($id) {
 		Subcuenta::destroy($id);
 		return redirect('subcuenta');
+	}
+
+	public function datatables() {
+
+		$data = Subcuenta::Datatables()->get();
+
+		return Datatables::of(collect($data))
+		->editColumn('nombre', function ($data) {
+			 	return '<a href="subcuenta/'.$data->id.'" >'. $data->nombre .'</a>';
+			})
+			->addColumn('action', function ($data) {
+		                return '<a href="subcuenta/'.$data->id.'/edit" class="btn btn-xs btn-primary">Edit</a>' . ' / <form method="POST" action="http://localhost/inventario/subcuenta/ ' .$data->id. '" accept-charset="UTF-8" style="display:inline"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="'. csrf_token() .'"><button type="submit" class="btn btn-danger btn-xs">Borrar</button></form>';
+            })
+			->make(true);
+
 	}
 
 }

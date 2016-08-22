@@ -25,7 +25,11 @@ Route::get('datatablecuenta', 'CuentaController@datatables');
 
 Route::resource('subcuenta', 'SubCuentaController');
 
+Route::get('datatablessubc', 'SubCuentaController@datatables');
+
 Route::resource('proveedor', 'ProveedoreController');
+
+Route::get('datatablesprov', 'ProveedoreController@datatables');
 
 Route::post('carga/create', 'CargaController@create');
 
@@ -43,7 +47,11 @@ Route::get('datatablesproducto', 'ProductoController@datatables');
 
 Route::resource('marca', 'MarcaController');
 
+Route::get('datatablesmarca', 'MarcaController@datatables');
+
 Route::resource('modelo', 'ModeloController');
+
+Route::get('datatablesmodelo', 'ModeloController@datatables');
 
 Route::resource('agente', 'AgenteController');
 

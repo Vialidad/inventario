@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Marca;
 use Illuminate\Http\Request;
 
+use Datatables;
+
 class MarcaController extends Controller {
 
 	/**
@@ -82,6 +84,21 @@ class MarcaController extends Controller {
 	public function destroy($id) {
 		Marca::destroy($id);
 		return redirect('marca');
+	}
+
+	public function datatables() {
+
+		$data = Marca::Datatables()->get();
+
+		return Datatables::of(collect($data))
+		->editColumn('nombre', function ($data) {
+			 	return '<a href="marca/'.$data->id.'" >'. $data->nombre .'</a>';
+			})
+			->addColumn('action', function ($data) {
+		                return '<a href="marca/'.$data->id.'/edit" class="btn btn-xs btn-primary">Edit</a>' . ' / <form method="POST" action="http://localhost/inventario/marca/ ' .$data->id. '" accept-charset="UTF-8" style="display:inline"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="'. csrf_token() .'"><button type="submit" class="btn btn-danger btn-xs">Borrar</button></form>';
+            })
+			->make(true);
+
 	}
 
 }
