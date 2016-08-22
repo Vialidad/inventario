@@ -2,16 +2,28 @@
 
 @section('content')
 
-    <h1>Subcuenta</h1>
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover">
-            <tr>
-                <th>ID.</th><th>Nombre</th><th>Cuenta Codigo</th><th>Stock</th>
-            </tr>
-            <tr>
-                <td>{{ $subcuentum->id }}</td> <td> {{ $subcuentum->nombre }} </td><td> {{ $subcuentum->cuenta_codigo }} </td><td> {{ $subcuentum->stock }} </td>
-            </tr>
-        </table>
-    </div>
+    <h1>Subcuenta <a href="{{ url('/subcuenta') }}" class="btn btn-primary pull-right btn-sm" style="margin-left:1%;">Volver</a></h1>
 
+    <hr>
+
+     <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Nombre:</label>
+            <div class="col-sm-6">
+                 <input type="text" class="form-control" value="{{ $subcuentum->nombre }}"  disabled="disabled">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Cuenta Codigo:</label>
+            <div class="col-sm-6">
+                 <input type="text" class="form-control" value="{{ $subcuentum->cuenta_codigo }}-{{ $subcuentum->cuenta->nombre }}"  disabled="disabled">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Stock:</label>
+            <div class="col-sm-6">
+                 <input type="text" class="form-control" value="{{ $subcuentum->stock }}"  disabled="disabled">
+            </div>
+        </div>
+    </div>
 @endsection

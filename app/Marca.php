@@ -9,6 +9,10 @@ class Marca extends Model {
 	protected $table = 'marcas';
 	public $timestamps = true;
 	protected $fillable = array('nombre');
-	protected $visible = array('nombre');
+	protected $visible = array('id','nombre');
+
+	public function scopeDatatables($query) {
+		return $query->select('id', 'nombre');
+	}
 
 }

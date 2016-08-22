@@ -18,4 +18,8 @@ class SubCuenta extends Model {
 	public function scopeListasc($query, $cuenta_codigo) {
 		return $query->select('nombre', 'id')->where('cuenta_codigo', $cuenta_codigo);
 	}
+
+	public function scopeDatatables($query) {
+		return $query->select('id', 'cuenta_codigo', 'nombre');
+	}
 }

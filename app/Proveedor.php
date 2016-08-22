@@ -9,6 +9,10 @@ class Proveedor extends Model {
 	protected $table = 'proveedores';
 	public $timestamps = true;
 	protected $fillable = array('nombre');
-	protected $visible = array('nombre');
+	protected $visible = array('id' ,'nombre');
+
+	public function scopeDatatables($query) {
+		return $query->select('id', 'nombre');
+	}
 
 }

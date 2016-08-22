@@ -2,16 +2,16 @@
 
 @section('content')
 
-    <h1>Proveedore</h1>
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover">
-            <tr>
-                <th>ID.</th> <th>Nombre</th>
-            </tr>
-            <tr>
-                <td>{{ $proveedore->id }}</td> <td> {{ $proveedore->nombre }} </td>
-            </tr>
-        </table>
-    </div>
+    <h1>Proveedore<a href="{{ url('/proveedor') }}" class="btn btn-primary pull-right btn-sm" style="margin-left:1%;">Volver</a></h1>
 
+    <hr>
+
+     <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Nombre:</label>
+            <div class="col-sm-6">
+                 <input type="text" class="form-control" value="{{ $proveedor->nombre }}"  disabled="disabled">
+            </div>
+        </div>
+    </div>
 @endsection

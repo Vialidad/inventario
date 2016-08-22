@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Modelo;
 use Illuminate\Http\Request;
 
+use Datatables;
+
 class ModeloController extends Controller {
 
 	/**
@@ -82,6 +84,21 @@ class ModeloController extends Controller {
 	public function destroy($id) {
 		Modelo::destroy($id);
 		return redirect('modelo');
+	}
+
+	public function datatables() {
+
+		$data = Modelo::Datatables()->get();
+
+		return Datatables::of(collect($data))
+		->editColumn('nombre', function ($data) {
+			 	return '<a href="modelo/'.$data->id.'" >'. $data->nombre .'</a>';
+			})
+			->addColumn('action', function ($data) {
+		                return '<a href="modelo/'.$data->id.'/edit" class="btn btn-xs btn-primary">Edit</a>' . ' / <form method="POST" action="http://localhost/inventario/modelo/ ' .$data->id. '" accept-charset="UTF-8" style="display:inline"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="'. csrf_token() .'"><button type="submit" class="btn btn-danger btn-xs">Borrar</button></form>';
+            })
+			->make(true);
+
 	}
 
 }

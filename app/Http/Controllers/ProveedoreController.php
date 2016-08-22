@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Proveedor;
 use Illuminate\Http\Request;
 
+use Datatables;
+
 class ProveedoreController extends Controller {
 
 	/**
@@ -82,6 +84,21 @@ class ProveedoreController extends Controller {
 	public function destroy($id) {
 		Proveedor::destroy($id);
 		return redirect('proveedor');
+	}
+
+	public function datatables() {
+
+		$data = Proveedor::Datatables()->get();
+
+		return Datatables::of(collect($data))
+		->editColumn('nombre', function ($data) {
+			 	return '<a href="proveedor/'.$data->id.'" >'. $data->nombre .'</a>';
+			})
+			->addColumn('action', function ($data) {
+		                return '<a href="proveedor/'.$data->id.'/edit" class="btn btn-xs btn-primary">Edit</a>' . ' / <form method="POST" action="http://localhost/inventario/proveedor/ ' .$data->id. '" accept-charset="UTF-8" style="display:inline"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="'. csrf_token() .'"><button type="submit" class="btn btn-danger btn-xs">Borrar</button></form>';
+            })
+			->make(true);
+
 	}
 
 }
