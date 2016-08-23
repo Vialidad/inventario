@@ -2,34 +2,47 @@
 
 @section('content')
 
-    <h1>Crear nueva Subcuenta</h1>
+    <h1>Crear nueva Subcuenta <a href="{{ url('/subcuenta') }}" class="btn btn-primary pull-right btn-sm" style="margin-left:1%;">Volver</a></h1>
     <hr/>
 
     {!! Form::open(['url' => 'subcuenta', 'class' => 'form-horizontal']) !!}
 
     <div class="form-group">
-                        {!! Form::label('cuenta_codigo', 'Cuenta Codigo: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::select('cuenta_codigo',$cuenta, null, array('class'=>'form-control')) !!}
-                        </div>
+        {!! Form::label('cuenta_codigo', 'Cuenta Codigo: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::select('cuenta_codigo',$cuenta, null, array('class'=>'form-control')) !!}
+        </div>
 
-                    </div><div class="form-group">
-                        {!! Form::label('nombre', 'Nombre: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::text('nombre', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div><div class="form-group">
-                        {!! Form::label('stock', 'Stock: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::text('stock', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('codigo', 'Codigo: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('codigo', null, ['class' => 'form-control']) !!}
+        </div>
+
+    </div>
+    
+    <div class="form-group">
+        {!! Form::label('nombre', 'Nombre: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('nombre', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('stock', 'Stock: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('stock', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
+    
     {!! Form::close() !!}
 
     @if ($errors->any())

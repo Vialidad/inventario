@@ -8,6 +8,12 @@
 
      <div class="form-horizontal">
         <div class="form-group">
+            <label class="col-sm-3 control-label">Codigo:</label>
+            <div class="col-sm-6">
+                 <input type="text" class="form-control" value="{{ $subcuentum->codigo }}"  disabled="disabled">
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-3 control-label">Nombre:</label>
             <div class="col-sm-6">
                  <input type="text" class="form-control" value="{{ $subcuentum->nombre }}"  disabled="disabled">

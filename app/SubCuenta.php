@@ -8,8 +8,8 @@ class SubCuenta extends Model {
 
 	protected $table = 'sub_cuentas';
 	public $timestamps = true;
-	protected $fillable = array('cuenta_codigo', 'nombre', 'stock');
-	protected $visible = array('id', 'cuenta_codigo', 'nombre', 'stock');
+	protected $fillable = array('cuenta_codigo', 'nombre', 'stock', 'codigo');
+	protected $visible = array('id', 'cuenta_codigo', 'nombre', 'stock', 'codigo');
 
 	public function cuenta() {
 		return $this->belongsTo('App\Cuenta', 'cuenta_codigo', 'codigo');
@@ -20,6 +20,6 @@ class SubCuenta extends Model {
 	}
 
 	public function scopeDatatables($query) {
-		return $query->select('id', 'cuenta_codigo', 'nombre');
+		return $query->select('id', 'cuenta_codigo', 'nombre', 'codigo');
 	}
 }
