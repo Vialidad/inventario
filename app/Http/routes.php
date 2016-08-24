@@ -11,6 +11,8 @@
 |
  */
 
+
+
 Route::get('/', function () {
 	return view('layouts.layout');
 });
@@ -19,80 +21,84 @@ Route::get('rutapublic', function () {
 	return public_path();
 });
 
-Route::resource('cuenta', 'CuentaController');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('datatablecuenta', 'CuentaController@datatables');
+	Route::resource('cuenta', 'CuentaController');
 
-Route::resource('subcuenta', 'SubCuentaController');
+	Route::get('datatablecuenta', 'CuentaController@datatables');
 
-Route::get('datatablessubc', 'SubCuentaController@datatables');
+	Route::resource('subcuenta', 'SubCuentaController');
 
-Route::resource('proveedor', 'ProveedoreController');
+	Route::get('datatablessubc', 'SubCuentaController@datatables');
 
-Route::get('datatablesprov', 'ProveedoreController@datatables');
+	Route::resource('proveedor', 'ProveedoreController');
 
-Route::post('carga/create', 'CargaController@create');
+	Route::get('datatablesprov', 'ProveedoreController@datatables');
 
-Route::post('carga/validarP9', 'CargaController@validarP9');
+	Route::post('carga/create', 'CargaController@create');
 
-Route::post('carga/validarNp', 'CargaController@validarNp');
+	Route::post('carga/validarP9', 'CargaController@validarP9');
 
-Route::resource('carga', 'CargaController');
+	Route::post('carga/validarNp', 'CargaController@validarNp');
 
-Route::get('datatables', 'CargaController@datatables');
+	Route::resource('carga', 'CargaController');
 
-Route::resource('producto', 'ProductoController'); 
+	Route::get('datatables', 'CargaController@datatables');
 
-Route::get('datatablesproducto', 'ProductoController@datatables');
+	Route::resource('producto', 'ProductoController'); 
 
-Route::resource('marca', 'MarcaController');
+	Route::get('datatablesproducto', 'ProductoController@datatables');
 
-Route::get('datatablesmarca', 'MarcaController@datatables');
+	Route::resource('marca', 'MarcaController');
 
-Route::resource('modelo', 'ModeloController');
+	Route::get('datatablesmarca', 'MarcaController@datatables');
 
-Route::get('datatablesmodelo', 'ModeloController@datatables');
+	Route::resource('modelo', 'ModeloController');
 
-Route::resource('agente', 'AgenteController');
+	Route::get('datatablesmodelo', 'ModeloController@datatables');
 
-Route::get('datatablesag', 'AgenteController@datatables');
+	Route::resource('agente', 'AgenteController');
 
-Route::post('transferencia/validarCodigo', 'TransferenciaController@validarCodigo');
+	Route::get('datatablesag', 'AgenteController@datatables');
 
-Route::resource('transferencia', 'TransferenciaController');
+	Route::post('transferencia/validarCodigo', 'TransferenciaController@validarCodigo');
 
-Route::get('datatablestrans', 'TransferenciaController@datatables');
+	Route::resource('transferencia', 'TransferenciaController');
 
-Route::get('datatablestransindex', 'TransferenciaController@indextables');				
+	Route::get('datatablestrans', 'TransferenciaController@datatables');
 
-Route::resource('dependencia', 'DependenciaController');
+	Route::get('datatablestransindex', 'TransferenciaController@indextables');				
 
-Route::get('datatablesdepen', 'DependenciaController@datatables');
+	Route::resource('dependencia', 'DependenciaController');
 
-Route::get('stock', 'GeneralController@stock');
+	Route::get('datatablesdepen', 'DependenciaController@datatables');
 
-Route::post('stock', 'GeneralController@stock');
+	Route::get('stock', 'GeneralController@stock');
 
-Route::get('datatables/{id}', 'GeneralController@datatables');
+	Route::post('stock', 'GeneralController@stock');
+
+	Route::get('datatables/{id}', 'GeneralController@datatables');
 
 
-Route::get('p9/{id}', 'GeneralController@imprimirp9');
+	Route::get('p9/{id}', 'GeneralController@imprimirp9');
 
-Route::get('tranf/{id}', 'GeneralController@imprimirTransferencia');
+	Route::get('tranf/{id}', 'GeneralController@imprimirTransferencia');
 
-Route::get('salida/{id}', 'GeneralController@imprimirSalida');
+	Route::get('salida/{id}', 'GeneralController@imprimirSalida');
 
-Route::resource('deposito', 'DepositoController');
+	Route::resource('deposito', 'DepositoController');
 
-Route::get('datatablesdepo', 'DepositoController@datatables');
+	Route::get('datatablesdepo', 'DepositoController@datatables');
 
-Route::resource('tipo_destino', 'TipoDestinoController');
+	Route::resource('tipo_destino', 'TipoDestinoController');
 
-Route::resource('salida_material', 'SalidaMaterialController');
+	Route::resource('salida_material', 'SalidaMaterialController');
 
-Route::get('datatablessalindex', 'SalidaMaterialController@indextables');
+	Route::get('datatablessalindex', 'SalidaMaterialController@indextables');
 
-Route::get('datatablessal', 'SalidaMaterialController@datatables');
+	Route::get('datatablessal', 'SalidaMaterialController@datatables');
+
+});
 
 //logueo
 

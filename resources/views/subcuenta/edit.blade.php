@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Editar Subcuenta</h1>
+    <h1>Editar Subcuenta <a href="{{ url('/subcuenta') }}" class="btn btn-primary pull-right btn-sm" style="margin-left:1%;">Volver</a></h1>
     <hr/>
 
     {!! Form::model($subcuentum, ['method' => 'PATCH', 'action' => ['SubCuentaController@update', $subcuentum->id], 'class' => 'form-horizontal']) !!}
@@ -12,13 +12,13 @@
         <div class="col-sm-6">
             {!! Form::text('cuenta_codigo', null, ['class' => 'form-control']) !!}
         </div>
-    </div><!--
+    </div>
     <div class="form-group">
         {!! Form::label('codigo', 'Codigo: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
             {!! Form::text('codigo', null, ['class' => 'form-control']) !!}
         </div>
-    </div>-->
+    </div>
     <div class="form-group">
         {!! Form::label('nombre', 'Nombre: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">

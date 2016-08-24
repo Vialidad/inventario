@@ -42,21 +42,23 @@
 
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-left">
-					 <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventario <span class="caret"></span></a>
-			          <ul class="dropdown-menu">
-			          	<li><a href="{{ url('/carga/create') }}">Alta</a></li>
-			          	<li><a href="{{ url('/carga') }}">Baja</a></li>
-			          	<li><a href="{{ url('/stock') }}">Stock</a></li>
-			          </ul>
-			        </li>
-			        <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transferencia <span class="caret"></span></a>
-			          <ul class="dropdown-menu">
-			          	<li><a href="{{ url('/transferencia/create') }}">Transferencia</a></li>
-			          	<li><a href="{{ url('/salida_material/create') }}">Salida de Material</a></li>
-			          </ul>
-			        </li>
+					@if (! Auth::guest())
+						 <li class="dropdown">
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventario <span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				          	<li><a href="{{ url('/carga/create') }}">Alta</a></li>
+				          	<li><a href="{{ url('/carga') }}">Baja</a></li>
+				          	<li><a href="{{ url('/stock') }}">Stock</a></li>
+				          </ul>
+				        </li>
+				        <li class="dropdown">
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transferencia <span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				          	<li><a href="{{ url('/transferencia/create') }}">Transferencia</a></li>
+				          	<li><a href="{{ url('/salida_material/create') }}">Salida de Material</a></li>
+				          </ul>
+				        </li>
+			        @endif
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

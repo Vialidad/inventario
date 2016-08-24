@@ -10,6 +10,7 @@
         <table id="example" class="table table-condensed table-bordered table-striped">
             <thead>
                 <tr>
+                    <th>Codigo</th>
                     <th>Nombre</th>
                     <th>Codigo Cuenta</th>
                     <th>Accion</th>
@@ -17,6 +18,7 @@
             </thead>
             <tfoor>
                 <tr>
+                    <th>Codigo</th>
                     <th>Nombre</th>
                     <th>Codigo Cuenta</th>
                     <th>Accion</th>
@@ -53,6 +55,7 @@ $(document).ready(function() {
             },
           ajax: '{!! action("SubCuentaController@datatables") !!}',
           columns: [
+                { data: 'codigo', name: 'codigo','orderable': true, 'searchable': true},
                 { data: 'nombre', name: 'nombre','orderable': true, 'searchable': true},
                 { data: 'cuenta_codigo', name: 'cuenta_codigo','orderable': true, 'searchable': true},
                 { data: 'action', name: 'action', orderable: true, searchable:true }
